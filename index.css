@@ -1,0 +1,331 @@
+
+        :root {
+            --background: #f9fafb;
+            --foreground: #111827;
+            --card: #ffffff;
+            --card-foreground: #111827;
+            --primary: #6366f1;
+            --primary-foreground: #ffffff;
+            --secondary: #f3f4f6;
+            --secondary-foreground: #111827;
+            --muted: #f3f4f6;
+            --muted-foreground: #6b7280;
+            --accent: #f3f4f6;
+            --accent-foreground: #111827;
+            --destructive: #ef4444;
+            --destructive-foreground: #ffffff;
+            --border: #e5e7eb;
+            --input: #e5e7eb;
+            --ring: #6366f1;
+            --radius: 0.5rem;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--foreground);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+        
+        /* Form Container */
+        .form-container {
+            background-color: var(--card);
+            border-radius: var(--radius);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 600px;
+            padding: 32px;
+            margin: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), #818cf8, #a78bfa);
+        }
+        
+        /* Form Header */
+        .form-header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .form-header h1 {
+            color: var(--foreground);
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.025em;
+        }
+        
+        .form-header p {
+            color: var(--muted-foreground);
+            font-size: 15px;
+        }
+        
+        /* Form Fields */
+        .form-field {
+            margin-bottom: 24px;
+            position: relative;
+        }
+        
+        .form-field label {
+            display: block;
+            font-size: 14px;
+            color: var(--foreground);
+            margin-bottom: 8px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .form-field input[type="text"],
+        .form-field input[type="tel"],
+        .form-field input[type="email"],
+        .form-field textarea,
+        .form-field select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--input);
+            border-radius: var(--radius);
+            font-size: 15px;
+            color: var(--foreground);
+            background-color: transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .form-field input[type="text"]:focus,
+        .form-field input[type="tel"]:focus,
+        .form-field input[type="email"]:focus,
+        .form-field textarea:focus,
+        .form-field select:focus {
+            outline: none;
+            border-color: var(--ring);
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
+        }
+
+        /* Floating Label Effect */
+        .float-field {
+            position: relative;
+        }
+
+        .float-field input,
+        .float-field textarea {
+            padding: 16px 16px 8px 16px;
+            height: 56px;
+        }
+
+        .float-field textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .float-field label {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            color: var(--muted-foreground);
+            pointer-events: none;
+            transition: all 0.2s ease;
+        }
+
+        .float-field input:focus ~ label,
+        .float-field input:not(:placeholder-shown) ~ label,
+        .float-field textarea:focus ~ label,
+        .float-field textarea:not(:placeholder-shown) ~ label {
+            top: 6px;
+            left: 16px;
+            font-size: 11px;
+            color: var(--primary);
+        }
+
+        /* Custom Select Styling */
+        .custom-select {
+            position: relative;
+            display: block;
+        }
+
+        .custom-select select {
+            appearance: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+            padding-right: 40px;
+        }
+
+        .custom-select::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid var(--muted-foreground);
+            border-bottom: 2px solid var(--muted-foreground);
+            pointer-events: none;
+            transform: translateY(-70%) rotate(45deg);
+            transition: all 0.2s ease;
+        }
+
+        .custom-select:hover::after {
+            border-color: var(--foreground);
+        }
+        
+        /* Radio Buttons */
+        .radio-group {
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        .radio-option {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .radio-option label {
+            display: flex;
+            align-items: center;
+            padding: 8px 16px;
+            border-radius: var(--radius);
+            border: 1px solid var(--input);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin: 0;
+        }
+
+        .radio-option label::before {
+            content: "";
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            border-radius: 50%;
+            border: 2px solid var(--input);
+            transition: all 0.2s ease;
+        }
+
+        .radio-option input[type="radio"]:checked + label {
+            border-color: var(--primary);
+            background-color: rgba(99, 102, 241, 0.05);
+        }
+
+        .radio-option input[type="radio"]:checked + label::before {
+            border-color: var(--primary);
+            background-color: var(--primary);
+            box-shadow: inset 0 0 0 4px var(--card);
+        }
+
+        .radio-option input[type="radio"]:focus + label {
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
+        }
+
+        .radio-option:hover label {
+            border-color: var(--ring);
+        }
+        
+        /* Submit Button */
+        .submit-button {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            border: none;
+            border-radius: var(--radius);
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            float: right;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-button:hover {
+            background-color: #4f46e5;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+        .submit-button::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+
+        .submit-button:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(30, 30);
+                opacity: 0;
+            }
+        }
+        
+        /* Required Field Indicator */
+        .required::after {
+            content: " *";
+            color: var(--destructive);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 24px;
+                margin: 10px;
+            }
+            
+            .form-header h1 {
+                font-size: 24px;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
